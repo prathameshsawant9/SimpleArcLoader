@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">SimpleLoader</string>
+
+    <array name="colors_1">
+        <item>#FFFFFF</item>
+        <item>#FFFFFF</item>
+    </array>
+
+    <array name="colors_2">
+        <item>#c2c200</item>
+    </array>
+
+    <array name="colors_3">
+        <item>#531ac5</item>
+    </array>
+
+    <array name="colors_4">
+        <item>#531ac5</item>
+        <item>#4367ff</item>
+        <item>#ff662e</item>
+    </array>
+
+</resources>
