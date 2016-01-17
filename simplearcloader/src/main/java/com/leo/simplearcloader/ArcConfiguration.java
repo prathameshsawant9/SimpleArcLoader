@@ -30,9 +30,9 @@ public class ArcConfiguration
     private int mStrokeWidth;
     private boolean mArcCircle;
     private int mColors[] = {Color.parseColor("#F90101"), // RED
-            Color.parseColor("#0266C8"), // BLUE
-            Color.parseColor("#F2B50F"), // YELLOW
-            Color.parseColor("#00933B")};// GREEN
+                             Color.parseColor("#0266C8"), // BLUE
+                             Color.parseColor("#F2B50F"), // YELLOW
+                             Color.parseColor("#00933B")};// GREEN
 
 
     // =============================================================================================
