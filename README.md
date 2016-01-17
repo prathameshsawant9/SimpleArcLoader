@@ -30,13 +30,17 @@ Making use of just the Loader
 </com.leo.simplearcloader.SimpleArcLoader>
 ```
 ## Example 3
-Customizing Dialog using ArcConfiguration 
+Customizing Dialog/SimpleArcLoader View using ArcConfiguration 
 ```java
 ArcConfiguration configuration = new ArcConfiguration(context);
 configuration.setLoaderStyle(SimpleArcLoader.STYLE.COMPLETE_ARC);
 configuration.setText("Please wait..");
 
+// Using this configuration with Dialog 
 mDialog.setConfiguration(configuration);
+
+// Using this configuration with ArcLoader
+mSimpleArcLoader.refreshArcLoaderDrawable(configuration);
 ```
 
 You can customize Arc/Dialog with ArcConfiguration methods -
