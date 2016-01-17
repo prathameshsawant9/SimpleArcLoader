@@ -18,8 +18,7 @@ public class ArcConfiguration
     // FIELDS
     // =============================================================================================
 
-    private SimpleArcLoader.
-            STYLE mLoaderStyle;
+    private SimpleArcLoader.STYLE mLoaderStyle;
 
     private Typeface mTypeFace = null;
     private String mText = "Loading..";
