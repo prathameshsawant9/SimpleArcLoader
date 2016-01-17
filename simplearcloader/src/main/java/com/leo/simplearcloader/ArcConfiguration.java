@@ -106,11 +106,6 @@ public class ArcConfiguration
         return mStrokeWidth;
     }
 
-    public void setArcWidthInDp(int mStrokeWidth)
-    {
-        this.mStrokeWidth = mStrokeWidth;
-    }
-
     public void setArcWidthInPixel(int mStrokeWidth) {
         this.mStrokeWidth = mStrokeWidth;
     }
