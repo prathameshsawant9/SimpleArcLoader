@@ -6,7 +6,12 @@
 <img src="https://github.com/generic-leo/SimpleArcLoader/blob/master/preview/simplearcdialog_2.gif" width="30%">
 
 # Setup
-
+## Gradle
+```groovy
+  dependencies {
+      compile 'com.leo.simplearcloader:simplearcloader:1.0.0'
+  }
+```
 
 ## Example 1
 To show dialog
