@@ -55,6 +55,8 @@ You can customize Arc/Dialog with ArcConfiguration methods -
 - setAnimationSpeedWithIndex(int mAnimationIndex) 
 Values to be passed SimpleArcLoader.SPEED_SLOW, SimpleArcLoader.SPEED_MEDIUM, SimpleArcLoader.SPEED_FAST
 
+Please refer the examples for some of the customization. 
+
 # Developed By
 - prathamesh.s1989@gmail.com
 
