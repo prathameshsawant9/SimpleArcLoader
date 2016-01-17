@@ -1,4 +1,5 @@
 <LinearLayout
+    android:id="@+id/rootlayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
