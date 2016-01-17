@@ -1,9 +1,11 @@
 # SimpleArcLoader
+- bored of seeing the same old Android Loader. SimpleArcLoader is one thing you should try. 
 
-- bored of seeing the same old Android Loader ?? SimpleArcLoader is one thing you should give it a try !
+# Preview 
+<img src="https://github.com/generic-leo/SimpleArcLoader/blob/master/preview/simplearcdialog_1.gif" width="30%">
+<img src="https://github.com/generic-leo/SimpleArcLoader/blob/master/preview/simplearcdialog_2.gif" width="30%">
 
 # Developed By
-
 - prathamesh.s1989@gmail.com
 
 # License
