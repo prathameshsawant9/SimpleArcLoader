@@ -38,8 +38,18 @@ configuration.setText("Please wait..");
 
 mDialog.setConfiguration(configuration);
 ```
-## More Customizations 
-- please refer the sample with some of the basic customization.
+
+You can customize Arc/Dialog with ArcConfiguration methods -
+- setLoaderStyle(SimpleArcLoader.STYLE mLoaderStyle)
+- setArcMargin(int mArcMargin)
+- setArcWidthInPixel(int mStrokeWidth)
+- setColors(int[] colors)
+- setTypeFace(Typeface typeFace)
+- setText(String mText)
+- setTextColor(int mTextColor)
+- setTextSize(int size)
+- setAnimationSpeedWithIndex(int mAnimationIndex) 
+Values to be passed SimpleArcLoader.SPEED_SLOW, SimpleArcLoader.SPEED_MEDIUM, SimpleArcLoader.SPEED_FAST
 
 # Developed By
 - prathamesh.s1989@gmail.com
