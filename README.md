@@ -1,4 +1,5 @@
-# SimpleArcLoader
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-SimpleArcLoader-green.svg?style=true)](https://android-arsenal.com/details/1/3066)
+# SimpleArcLoader 
 - bored of seeing the same old Android Loader ? SimpleArcLoader is one thing you should try. 
 
 # Preview 
@@ -9,7 +10,7 @@
 ## Gradle
 ```groovy
   dependencies {
-      compile 'com.leo.simplearcloader:simplearcloader:1.0.0'
+      compile 'com.leo.simplearcloader:simplearcloader:1.0.+'
   }
 ```
 
