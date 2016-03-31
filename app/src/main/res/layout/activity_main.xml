@@ -31,7 +31,8 @@
             android:layout_height="30dp"
             custom:arc_style="simple_arc"
             custom:arc_speed="medium"
-            custom:arc_thickness="2dp"
+            custom:outer_arc_thickness="2dp"
+            custom:inner_arc_thickness="2dp"
             custom:arc_colors="@array/colors_1"
             custom:arc_margin="3dp">
         </com.leo.simplearcloader.SimpleArcLoader>
@@ -139,6 +140,9 @@
                         android:layout_height="60dp"
                         custom:arc_style="simple_arc"
                         custom:arc_speed="medium"
+                        custom:arc_rounded="true"
+                        custom:outer_arc_thickness="4dp"
+                        custom:inner_arc_thickness="2dp"
                         custom:arc_colors="@array/colors_2"
                         custom:arc_margin="3dp">
                     </com.leo.simplearcloader.SimpleArcLoader>
