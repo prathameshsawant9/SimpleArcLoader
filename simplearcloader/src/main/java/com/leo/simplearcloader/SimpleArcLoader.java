@@ -117,10 +117,20 @@ public class SimpleArcLoader extends View implements Animatable
                 configuration.setArcMargin(value.intValue());
             }
 
-            if(type == R.styleable.SimpleArcLoader_arc_thickness)
+            if(type == R.styleable.SimpleArcLoader_outer_arc_thickness)
             {
-                Float value = array.getDimension(R.styleable.SimpleArcLoader_arc_thickness,getContext().getResources().getDimension(R.dimen.stroke_width));
-                configuration.setArcWidthInPixel(value.intValue());
+                Float value = array.getDimension(R.styleable.SimpleArcLoader_outer_arc_thickness,getContext().getResources().getDimension(R.dimen.stroke_width));
+                configuration.setOuterArcWidthInPixel(value.intValue());
+            }
+            if(type == R.styleable.SimpleArcLoader_inner_arc_thickness)
+            {
+                Float value = array.getDimension(R.styleable.SimpleArcLoader_inner_arc_thickness,getContext().getResources().getDimension(R.dimen.stroke_width));
+                configuration.setInnerArcWidthInPixel(value.intValue());
+            }
+            if(type == R.styleable.SimpleArcLoader_arc_rounded)
+            {
+                boolean value = array.getBoolean(R.styleable.SimpleArcLoader_arc_rounded,false);
+                configuration.setArcRounded(value);
             }
         }
 
@@ -183,7 +193,7 @@ public class SimpleArcLoader extends View implements Animatable
 
         ArcConfiguration mConfiguration;
         Paint mPaint;
-        int mStrokeWidth,mArcMargin,mArcAnglePosition,mAnimationSpeed;
+        int mOuterStrokeWidth,mInnerStrokeWidth,mArcMargin,mArcAnglePosition,mAnimationSpeed;
         int mArcColors[];
         boolean isRunning;
         boolean mDrawCirle;
@@ -196,7 +206,8 @@ public class SimpleArcLoader extends View implements Animatable
 
         private void initComponents()
         {
-            mStrokeWidth = mConfiguration.getArcWidth();
+            mOuterStrokeWidth = mConfiguration.getOuterArcWidth();
+            mInnerStrokeWidth = mConfiguration.getInnerArcWidth();
             mArcMargin = mConfiguration.getArcMargin();
             mArcColors = mConfiguration.getColors();
             mAnimationSpeed = mConfiguration.getAnimationSpeed();
@@ -204,8 +215,11 @@ public class SimpleArcLoader extends View implements Animatable
 
             mPaint = new Paint();
             mPaint.setAntiAlias(true);
-            mPaint.setStrokeWidth(mStrokeWidth);
             mPaint.setStyle(Paint.Style.STROKE);
+            if (mConfiguration.isArcRounded()) {
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+            }
 
             // Customize as per Style
             if(mConfiguration.getLoaderStyle() == STYLE.SIMPLE_ARC)
@@ -250,8 +264,8 @@ public class SimpleArcLoader extends View implements Animatable
             int w = getWidth();
             int h = getHeight();
 
-            int arc1_bound_start = mArcMargin + mStrokeWidth*2;
-            int arc_padding = 0;
+            int arc1_bound_start = mArcMargin + mOuterStrokeWidth + mInnerStrokeWidth / 2;
+            int arc_padding = 3;
 
             if(mDrawCirle)
             {
@@ -266,8 +280,8 @@ public class SimpleArcLoader extends View implements Animatable
                 arc_padding +=3;
             }
 
-            RectF arc1_bound = new RectF(arc1_bound_start + arc_padding,arc1_bound_start + arc_padding, ((w-(mStrokeWidth*2)) - mArcMargin ) - arc_padding,((h-(mStrokeWidth*2)) - mArcMargin) - arc_padding);
-            RectF arc2_bound = new RectF(mStrokeWidth + arc_padding ,mStrokeWidth + arc_padding,(w-mStrokeWidth) - arc_padding ,( h-mStrokeWidth ) - arc_padding);
+            RectF arc1_bound = new RectF(arc1_bound_start + arc_padding,arc1_bound_start + arc_padding, w - arc1_bound_start - arc_padding,h - arc1_bound_start - arc_padding);
+            RectF arc2_bound = new RectF(mOuterStrokeWidth / 2 + arc_padding , mOuterStrokeWidth / 2 + arc_padding,(w - mOuterStrokeWidth / 2) - arc_padding ,( h - mOuterStrokeWidth / 2) - arc_padding);
             int colors_length = mArcColors.length;
 
             for(int i = 0 ; i < (colors_length > 4 ? 4 : colors_length ) ; i++ )
@@ -276,7 +290,9 @@ public class SimpleArcLoader extends View implements Animatable
 
                 mPaint.setColor(mArcColors[i]);
 
-                canvas.drawArc(arc1_bound,  startangle + mArcAnglePosition, 90 , false, mPaint);
+                mPaint.setStrokeWidth(mInnerStrokeWidth);
+                canvas.drawArc(arc1_bound, startangle + mArcAnglePosition, 90, false, mPaint);
+                mPaint.setStrokeWidth(mOuterStrokeWidth);
                 canvas.drawArc(arc2_bound, startangle - mArcAnglePosition, 90 , false, mPaint);
             }
         }

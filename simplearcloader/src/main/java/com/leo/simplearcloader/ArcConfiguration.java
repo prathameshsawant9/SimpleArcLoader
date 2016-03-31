@@ -27,8 +27,10 @@ public class ArcConfiguration
 
     private int mArcMargin;
     private int mAnimationSpeed;
-    private int mStrokeWidth;
+    private int mOuterStrokeWidth;
+    private int mInnerStrokeWidth;
     private boolean mArcCircle;
+    private boolean mArcRounded;
     private int mColors[] = {Color.parseColor("#F90101"), // RED
                              Color.parseColor("#0266C8"), // BLUE
                              Color.parseColor("#F2B50F"), // YELLOW
@@ -47,7 +49,8 @@ public class ArcConfiguration
         mLoaderStyle = SimpleArcLoader.STYLE.SIMPLE_ARC;
         mArcMargin = SimpleArcLoader.MARGIN_MEDIUM;
         mAnimationSpeed = SimpleArcLoader.SPEED_MEDIUM;
-        mStrokeWidth = (int) context.getResources().getDimension(R.dimen.stroke_width);
+        mOuterStrokeWidth = (int) context.getResources().getDimension(R.dimen.stroke_width);
+        mInnerStrokeWidth = (int) context.getResources().getDimension(R.dimen.stroke_width);
     }
 
     public ArcConfiguration(Context context, SimpleArcLoader.STYLE mArcStyle) {
@@ -101,12 +104,28 @@ public class ArcConfiguration
         }
     }
 
-    public int getArcWidth() {
-        return mStrokeWidth;
+    public int getOuterArcWidth() {
+        return mOuterStrokeWidth;
     }
 
-    public void setArcWidthInPixel(int mStrokeWidth) {
-        this.mStrokeWidth = mStrokeWidth;
+    public void setOuterArcWidthInPixel(int mStrokeWidth) {
+        this.mOuterStrokeWidth = mStrokeWidth;
+    }
+
+    public int getInnerArcWidth() {
+        return mInnerStrokeWidth;
+    }
+
+    public void setInnerArcWidthInPixel(int mStrokeWidth) {
+        this.mInnerStrokeWidth = mStrokeWidth;
+    }
+
+    public boolean isArcRounded() {
+        return mArcRounded;
+    }
+
+    public void setArcRounded(boolean mArcRounded) {
+        this.mArcRounded = mArcRounded;
     }
 
     public void setColors(int[] colors) {

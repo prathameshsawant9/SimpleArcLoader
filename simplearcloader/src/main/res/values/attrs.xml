@@ -11,7 +11,9 @@
         </attr>
 
         <attr name="arc_margin" format="dimension"/>
-        <attr name="arc_thickness" format="dimension"/>
+        <attr name="outer_arc_thickness" format="dimension"/>
+        <attr name="inner_arc_thickness" format="dimension"/>
+        <attr name="arc_rounded" format="boolean"/>
 
         <attr name="arc_speed" format="enum">
             <enum name="slow" value="0"></enum>
