@@ -6,12 +6,15 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
+import android.graphics.PixelFormat;
 import android.graphics.RectF;
 import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.View;
+
+import java.lang.ref.WeakReference;
 
 /**
  * Created by prathamesh on 16/01/16.
@@ -76,7 +79,7 @@ public class SimpleArcLoader extends View implements Animatable
         ArcConfiguration configuration = readFromAttributes(attributeSet);
 
         // Load Drawable for this View
-        mArcDrawable = new ArcDrawable(configuration);
+        mArcDrawable = new ArcDrawable(configuration,this);
         setBackgroundDrawable(mArcDrawable);
 
         // Start the Animation
@@ -155,7 +158,7 @@ public class SimpleArcLoader extends View implements Animatable
             stop();
 
         // Load Drawable for this View
-        mArcDrawable = new ArcDrawable(configuration);
+        mArcDrawable = new ArcDrawable(configuration,this);
         setBackgroundDrawable(mArcDrawable);
 
         // Start the Animation
@@ -166,7 +169,7 @@ public class SimpleArcLoader extends View implements Animatable
     // CLASS
     // =============================================================================================
 
-    private class ArcDrawable extends Drawable implements Animatable
+    private static class ArcDrawable extends Drawable implements Animatable
     {
         final Runnable updater = new Runnable() {
             @Override
@@ -187,9 +190,11 @@ public class SimpleArcLoader extends View implements Animatable
         int mArcColors[];
         boolean isRunning;
         boolean mDrawCirle;
+        WeakReference<View> mViewReference;
 
-        public ArcDrawable(ArcConfiguration configuration) {
+        public ArcDrawable(ArcConfiguration configuration,View viewReference) {
             mConfiguration = configuration;
+            mViewReference = new WeakReference<View>(viewReference);
 
             initComponents();
         }
@@ -246,9 +251,13 @@ public class SimpleArcLoader extends View implements Animatable
 
         @Override
         public void draw(Canvas canvas) {
+            View currentView = mViewReference.get();
 
-            int w = getWidth();
-            int h = getHeight();
+            if(currentView == null)
+                return;
+
+            int w = currentView.getWidth();
+            int h = currentView.getHeight();
 
             int arc1_bound_start = mArcMargin + mStrokeWidth*2;
             int arc_padding = 0;
@@ -289,7 +298,7 @@ public class SimpleArcLoader extends View implements Animatable
 
         @Override
         public int getOpacity() {
-            return 0;
+            return PixelFormat.UNKNOWN;
         }
     }
 
